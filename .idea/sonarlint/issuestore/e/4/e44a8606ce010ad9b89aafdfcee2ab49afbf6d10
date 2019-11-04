@@ -1,0 +1,9 @@
+
+dsquid:S10753"ARefactor your code to get this URI from a customizable parameter.(ÌÛÀùÿÿÿÿ8½öĞµâ-
+_squid:S10754"ARefactor your code to get this URI from a customizable parameter.(ª­Ù±8¡½•·â-
+wsquid:S30084"YRename this field "CONF_FILE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª­Ù±8¡½•·â-
+8squid:S1220""Move this file to a named package.8ê·¬­â-
+Ksquid:S2755e"-Disable XML external entity (XXE) processing.(¦¢öŒ8£¹ú·â-
+Ksquid:S2755y"-Disable XML external entity (XXE) processing.(¦¢öŒ8£¹ú·â-
+xsquid:S4435n"ZSecure this "Transformer" by either disabling external DTDs or enabling secure processing.(İ‰Ë–8£¹ú·â-
+€squid:S30083"]Rename this field "PROPERTY_FILE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÛÀùÿÿÿÿ8·ûÒµâ-
