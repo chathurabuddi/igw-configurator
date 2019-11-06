@@ -21,7 +21,7 @@ public class ValueChange {
 
     private String xpath;
 
-    private boolean copy;
+    private String changeType;
 
     private String value;
 
@@ -41,12 +41,12 @@ public class ValueChange {
         this.xpath = xpath;
     }
 
-    public boolean isCopy() {
-        return copy;
+    public String getChangeType() {
+        return changeType;
     }
 
-    public void setCopy(boolean copy) {
-        this.copy = copy;
+    public void setCopy(String changeType) {
+        this.changeType = changeType;
     }
 
     public String getValue() {
