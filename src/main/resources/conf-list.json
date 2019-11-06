@@ -14,12 +14,9 @@
 			"name": "copy admin username",
 			"xpath": "/APIManager/AuthManager/Password",
 			"changeType": "copy"
+
 		}]
-	}
-
-
-		,
-
+	}	,
 		{
 			"file": "/repository/conf/user-mgt.xml",
 			"changes": [{
