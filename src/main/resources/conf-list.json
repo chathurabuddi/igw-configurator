@@ -15,120 +15,152 @@
 			"xpath": "/APIManager/AuthManager/Password",
 			"changeType": "copy"
 		}] 
-	}],
-"master_data_source":[{
-		"file": "/repository/conf/datasources/master-datasources.xml",
-		"changes": [{
-			"name": "WSO2AM_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2AM_DB username",
-			"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2AM_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/password",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2AM_STATS_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2AM_STATS_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2AM_STATS_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/password",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2MBStoreDB url",
-			"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2MBStoreDB password",
-			"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2MBStoreDB password",
-			"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/password",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2UM_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2UM_DB username",
-			"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2UM_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/password",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2REG_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2REG_DB username",
-			"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2REG_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/password",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2TELCO_DEP_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2TELCO_DEP_DB username",
-			"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2TELCO_DEP_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/password",
-			"changeType": "copy"
+	},
+		{
+			"file": "/repository/conf/registry.xml",
+			"changes": [{
+			"name": "commenting files",
+			"xpath": "/wso2registry/remoteInstance",
+			"changeType": "comment",
+			"value": "<remoteInstance url=\"https://localhost:9443/registry\">\n        <id>mount</id>\n        <dbConfig>sharedregistry</dbConfig>\n        <readOnly>false</readOnly>\n        <enableCache>true</enableCache>\n        <registryRoot>/</registryRoot>\n    </remoteInstance>"
+		}]},
+		{
+			"file": "/repository/conf/datasources/master-datasources.xml",
+			"changes": [
+				{
+					"name": "WSO2AM_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2AM_DB username",
+					"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2AM_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2AM_STATS_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2AM_STATS_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2AM_STATS_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2MBStoreDB url",
+					"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2MBStoreDB password",
+					"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2MBStoreDB password",
+					"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2UM_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2UM_DB username",
+					"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2UM_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2REG_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2REG_DB username",
+					"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2REG_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2TELCO_DEP_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2TELCO_DEP_DB username",
+					"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2TELCO_DEP_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "ACTIVITI_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "ACTIVITI_DB username",
+					"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "ACTIVITI_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/password",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2TELCO_RATE_DB url",
+					"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/url",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2TELCO_RATE_DB username",
+					"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/username",
+					"changeType": "copy"
+				},
+				{
+					"name": "WSO2TELCO_RATE_DB password",
+					"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/password",
+					"changeType": "copy"
+				}
+			]
+		},
 
-		}, {
-			"name": "ACTIVITI_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "ACTIVITI_DB username",
-			"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "ACTIVITI_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/password",
-			"changeType": "copy"
+				{
+					"file": "/repository/conf/user_mgt.xml",
+					"changes": [{
+						"name": "disable advance throttling",
+						"xpath": "/UserManager/Realm/Configuration/UserStoreManager",
+						"changeType": "uncomment",
+						"value": "<UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\">"
+					}]
+				}
 
-		}, {
-			"name": "WSO2TELCO_RATE_DB url",
-			"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/url",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2TELCO_RATE_DB username",
-			"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/username",
-			"changeType": "copy"
-		}, {
-			"name": "WSO2TELCO_RATE_DB password",
-			"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/password",
-			"changeType": "copy"
-
-
-		}]
-	}],
-"user_mgt": [{
-		"file": "/repository/conf/user_mgt.xml",
-		"changes": [{
-			"name": "disable advance throttling",
-			"xpath": "/UserManager/Realm/Configuration/UserStoreManager",
-			"changeType": "uncomment",
-			"value": "<UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\">"
-		}]
-	}],
+	],
   "IdentityServerConf": [{
 		"file": "/repository/conf/api-manager.xml",
 		"changes": [{
