@@ -1,0 +1,21 @@
+{
+	"apimConf": [{
+		"file": "/repository/conf/api-manager.xml",
+		"changes": [{
+			"name": "disable advance throttling",
+			"xpath": "/APIManager/ThrottlingConfigurations/EnableAdvanceThrottling",
+			"changeType": "copy",
+			"value": false
+		}, {
+			"name": "copy admin username",
+			"xpath": "/APIManager/AuthManager/Username",
+			"changeType": "copy"
+		}, {
+			"name": "copy admin username",
+			"xpath": "/APIManager/AuthManager/Password",
+			"changeType": "copy"
+		}]
+
+	}]
+
+}

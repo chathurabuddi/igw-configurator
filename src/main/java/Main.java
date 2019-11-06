@@ -35,8 +35,8 @@ import org.w3c.dom.*;
 
 public class Main {
 
-    private static String PROPERTY_FILE_PATH = "/home/lahiru/Desktop/merge/upgrade.properties";
-    private static String CONF_FILE_PATH = "/home/lahiru/Desktop/merge/conf-list.json";
+    private static String PROPERTY_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/upgrade.properties";
+    private static String CONF_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/conf-list.json";
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
@@ -72,6 +72,8 @@ public class Main {
                 }
                 else if(change.getChangeType().equals("comment")) {
                     commentXmlNode(newFile,xpath,change.getValue());
+                }else if(change.getChangeType().equals("uncomment")) {
+                    System.out.println("uncomment");
                 }
 
             }
