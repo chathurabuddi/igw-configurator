@@ -16,7 +16,8 @@
 			"changeType": "copy"
 
 		}]
-	}	,
+	}
+	,
 		{
 			"file": "/repository/conf/user-mgt.xml",
 			"changes": [{
@@ -33,7 +34,16 @@
 				"xpath": "/wso2registry/remoteInstance",
 				"changeType": "comment",
 				"value": "<remoteInstance url=\"https://localhost:9443/registry\">\n        <id>mount</id>\n        <dbConfig>sharedregistry</dbConfig>\n        <readOnly>false</readOnly>\n        <enableCache>true</enableCache>\n        <registryRoot>/</registryRoot>\n    </remoteInstance>"
-			}]},
+			},
+				{
+					"name": "Replace attribute files",
+					"xpath": "/wso2registry/dbConfig",
+					"changeType": "replace_attribute",
+					"value": "sharedregistry",
+					"attribute": "name",
+					"oldValue" : "govregistry"
+				}
+			]},
 		{
 			"file": "/repository/conf/datasources/master-datasources.xml",
 			"changes": [

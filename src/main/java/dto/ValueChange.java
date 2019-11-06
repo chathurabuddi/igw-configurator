@@ -18,12 +18,15 @@ package dto;
 public class ValueChange {
 
     private String name;
+    private String attribute;
 
     private String xpath;
 
     private String changeType;
 
     private String value;
+    private String oldValue;
+
 
     public String getName() {
         return name;
@@ -55,5 +58,21 @@ public class ValueChange {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    public String getOldValue() {
+        return oldValue;
+    }
+
+    public void setOldValue(String oldValue) {
+        this.oldValue = oldValue;
     }
 }
