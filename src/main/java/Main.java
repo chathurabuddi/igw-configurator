@@ -1,35 +1,22 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import dto.ChangedFile;
 import dto.Config;
 import dto.ValueChange;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
+import jdk.internal.org.xml.sax.SAXException;
+import java.io.File;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.*;
+import org.w3c.dom.*;
 /**
  * Copyright (c) 2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
  * <p>
@@ -48,8 +35,8 @@ import org.xml.sax.SAXException;
 
 public class Main {
 
-    private static String PROPERTY_FILE_PATH = "/home/chathurabuddi/IdeaProjects/apigate-binaries/igw-upgrade-scripts/upgrade.properties";
-    private static String CONF_FILE_PATH = "/home/chathurabuddi/IdeaProjects/apigate-binaries/igw-upgrade-scripts/conf-list.json";
+    private static String PROPERTY_FILE_PATH = "/home/lahiru/Desktop/merge/upgrade.properties";
+    private static String CONF_FILE_PATH = "/home/lahiru/Desktop/merge/conf-list.json";
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
@@ -69,7 +56,7 @@ public class Main {
     }
 
     private static void configureFiles(List<ChangedFile> changedFiles, String newKey, String oldKey) throws
-            IOException, ParserConfigurationException, SAXException, XPathExpressionException, TransformerException {
+            IOException, ParserConfigurationException, SAXException, XPathExpressionException, TransformerException, org.xml.sax.SAXException {
         Properties upgradeProperties = loadProperties(PROPERTY_FILE_PATH);
         for (ChangedFile changedFile : changedFiles) {
             String filePath = changedFile.getFile();
@@ -77,12 +64,16 @@ public class Main {
                 logger.info(change.getName());
                 String xpath = change.getXpath();
                 File newFile = new File(upgradeProperties.getProperty(newKey) + filePath);
-                if(change.isCopy()) {
+                if(change.getChangeType().equals("copy")) {
                     File oldFile = new File(upgradeProperties.getProperty(oldKey) + filePath);
                     changeXmlNodeValue(newFile, xpath, readXmlNodeValue(oldFile, xpath));
-                } else {
+                } else if(change.getChangeType().equals("add")) {
                     changeXmlNodeValue(newFile, xpath, change.getValue());
                 }
+                else if(change.getChangeType().equals("comment")) {
+                    commentXmlNode(newFile,xpath,change.getValue());
+                }
+
             }
         }
     }
@@ -96,7 +87,7 @@ public class Main {
     }
 
     private static void changeXmlNodeValue(File file, String xPath, String value) throws IOException,
-            ParserConfigurationException, SAXException, XPathExpressionException, TransformerException {
+            ParserConfigurationException, SAXException, XPathExpressionException, TransformerException, org.xml.sax.SAXException {
         try(FileInputStream fileIs = new FileInputStream(file)){
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
@@ -116,7 +107,7 @@ public class Main {
     }
 
     private static String readXmlNodeValue(File file, String xPath) throws IOException,
-            ParserConfigurationException, SAXException, XPathExpressionException {
+            ParserConfigurationException, SAXException, XPathExpressionException, org.xml.sax.SAXException {
         try(FileInputStream fileIs = new FileInputStream(file)){
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
@@ -128,4 +119,34 @@ public class Main {
         }
     }
 
-}
+    private static void commentXmlNode(File file, String xpath,String value) {
+
+        try(FileInputStream fileIs = new FileInputStream(file)) {
+            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = builderFactory.newDocumentBuilder();
+            Document xmlDocument = builder.parse(fileIs);
+            XPathFactory xpf = XPathFactory.newInstance();
+            XPath xpath1 = xpf.newXPath();
+            XPathExpression expression = xpath1.compile(xpath);
+            Node b13Node = (Node) expression.evaluate(xmlDocument, XPathConstants.NODE);
+            Comment comment = xmlDocument.createComment(value);
+            Element element = (Element) b13Node;
+            element.getParentNode().insertBefore(comment, element);
+            b13Node.getParentNode().removeChild(b13Node);
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer t = tf.newTransformer();
+            DOMSource source = new DOMSource(xmlDocument);
+            StreamResult result = new StreamResult(file);
+            t.transform(source,result);
+        } catch (IOException | ParserConfigurationException | XPathExpressionException | TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        } catch (org.xml.sax.SAXException e) {
+            e.printStackTrace();
+        }
+    }
+
+    }
+
+
