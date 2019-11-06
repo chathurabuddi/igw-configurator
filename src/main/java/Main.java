@@ -36,8 +36,8 @@ import org.w3c.dom.*;
 
 public class Main {
 
-    private static String PROPERTY_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/upgrade.properties";
-    private static String CONF_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/igw-configurator2/igw-configurator/src/main/resources/conf-list.json";
+    private static String PROPERTY_FILE_PATH = "/home/lahiru/Desktop/merge/upgrade.properties";
+    private static String CONF_FILE_PATH = "src/main/resources/conf-list.json";
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
@@ -48,8 +48,8 @@ public class Main {
             logger.info("configuring API-M");
             configureFiles(config.getApimConf(), "new.dep.location", "old.dep.location");
 
-            logger.info("configuring IS");
-            configureFiles(config.getIsConf(), "new.is.location", "old.is.location");
+//            logger.info("configuring IS");
+//            configureFiles(config.getIsConf(), "new.is.location", "old.is.location");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
@@ -76,6 +76,9 @@ public class Main {
                 }else if(change.getChangeType().equals("uncomment")) {
                     Uncomment u=new Uncomment();
                     u.makeUncommentXml(newFile.getPath().toString(),change.getValue());
+                }
+                else if(change.getChangeType().equals("replace_attribute")){
+                    replaceXmlNode(newFile,xpath,change.getValue(),change.getAttribute(),change.getOldValue());
                 }
 
             }
@@ -149,6 +152,39 @@ public class Main {
         } catch (org.xml.sax.SAXException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void replaceXmlNode(File file, String xpath,String val, String attribute,String oldval)
+    {
+
+        try(FileInputStream fileIs = new FileInputStream(file)) {
+            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = builderFactory.newDocumentBuilder();
+            Document xmlDocument = builder.parse(fileIs);
+            XPathFactory xpf = XPathFactory.newInstance();
+            XPath xpath1 = xpf.newXPath();
+           // XPathExpression expression = xpath1.compile(xpath);
+            String xpth = "//*[contains(@"+attribute+","+"'"+oldval+"'"+")]";
+            NodeList nodes = (NodeList)xpath1.evaluate(xpth,
+                    xmlDocument, XPathConstants.NODESET);
+            for (int idx = 0; idx < nodes.getLength(); idx++) {
+                Node value = nodes.item(idx).getAttributes().getNamedItem("name");
+                String nodevalue = value.getNodeValue();
+                value.setNodeValue(nodevalue.replaceAll(oldval, val));
+            }
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer t = tf.newTransformer();
+            DOMSource source = new DOMSource(xmlDocument);
+            StreamResult result = new StreamResult(file);
+            t.transform(source,result);
+        } catch (IOException | ParserConfigurationException | XPathExpressionException | TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        } catch (org.xml.sax.SAXException e) {
+            e.printStackTrace();
+        }
+
     }
 
     }
