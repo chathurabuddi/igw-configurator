@@ -37,7 +37,7 @@ import org.w3c.dom.*;
 public class Main {
 
     private static String PROPERTY_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/upgrade.properties";
-    private static String CONF_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/conf-list.json";
+    private static String CONF_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/igw-configurator2/igw-configurator/src/main/resources/conf-list.json";
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
@@ -75,8 +75,7 @@ public class Main {
                     commentXmlNode(newFile,xpath,change.getValue());
                 }else if(change.getChangeType().equals("uncomment")) {
                     Uncomment u=new Uncomment();
-                    System.out.println(newFile.getPath());
-                    //u.makeUncommentXml();
+                    u.makeUncommentXml(newFile.getPath().toString(),change.getValue());
                 }
 
             }

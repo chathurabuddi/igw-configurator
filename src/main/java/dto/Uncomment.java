@@ -28,7 +28,7 @@ public class Uncomment {
             }
             Path path = Paths.get(xmlfilepath);
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-            lines.set(lineNum + 1, value);
+            lines.set(lineNum + 1, '<'+value+'>');
             Files.write(path, lines, StandardCharsets.UTF_8);
             while ((line = reader.readLine()) != null && line.indexOf("-->") == -1) {
                 key += line;
