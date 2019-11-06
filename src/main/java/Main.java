@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import dto.ChangedFile;
 import dto.Config;
+import dto.Uncomment;
 import dto.ValueChange;
 import jdk.internal.org.xml.sax.SAXException;
 import java.io.File;
@@ -36,7 +37,7 @@ import org.w3c.dom.*;
 public class Main {
 
     private static String PROPERTY_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/upgrade.properties";
-    private static String CONF_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/Files/conf-list.json";
+    private static String CONF_FILE_PATH = "/home/praneeth/Documents/workspace/sprint2/igw-configurator2/igw-configurator/src/main/resources/conf-list.json";
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
@@ -73,7 +74,8 @@ public class Main {
                 else if(change.getChangeType().equals("comment")) {
                     commentXmlNode(newFile,xpath,change.getValue());
                 }else if(change.getChangeType().equals("uncomment")) {
-                    System.out.println("uncomment");
+                    Uncomment u=new Uncomment();
+                    u.makeUncommentXml(newFile.getPath().toString(),change.getValue());
                 }
 
             }
