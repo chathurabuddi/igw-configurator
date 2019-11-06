@@ -15,7 +15,20 @@
 			"xpath": "/APIManager/AuthManager/Password",
 			"changeType": "copy"
 		}]
-	},
+	}
+
+
+		,
+
+		{
+			"file": "/repository/conf/user-mgt.xml",
+			"changes": [{
+				"name": "disable advance throttling",
+				"xpath": "/UserManager/Realm/Configuration/UserStoreManager",
+				"changeType": "uncomment",
+				"value": "UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\""
+			}]
+		},
 		{
 			"file": "/repository/conf/registry.xml",
 			"changes": [{
@@ -148,16 +161,6 @@
 					"changeType": "copy"
 				}
 			]
-		},
-
-		{
-			"file": "/repository/conf/user-mgt.xml",
-			"changes": [{
-				"name": "disable advance throttling",
-				"xpath": "/UserManager/Realm/Configuration/UserStoreManager",
-				"changeType": "uncomment",
-				"value": "<UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\">"
-			}]
 		}
 
 	],

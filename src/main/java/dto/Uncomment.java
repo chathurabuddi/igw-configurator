@@ -22,7 +22,7 @@ public class Uncomment {
             FileReader file = new FileReader(xmlfilepath);
             BufferedReader reader = new BufferedReader(file);
             String line = reader.readLine();
-            while ((line = reader.readLine()) != null && line.indexOf(value) == -1) {
+            while ((line = reader.readLine()) != null && (line.indexOf(value) == -1)) {
                 key += line;
                 lineNum++;
             }
@@ -39,13 +39,11 @@ public class Uncomment {
             if(charCount<2){
                 //  end with when only -->
                 line=line.replaceAll("-->","");
-                System.out.println(line);
                 lines.set(lineNum+2 ,line+">");
                 Files.write(path, lines, StandardCharsets.UTF_8);
             }else{
                 //  end with when the >-->
                 line=line.replaceAll("-->","");
-                System.out.println(line);
                 lines.set(lineNum+2 ,line);
                 Files.write(path, lines, StandardCharsets.UTF_8);
             }
@@ -59,7 +57,5 @@ public class Uncomment {
         u.makeUncommentXml("/home/praneeth/Documents/workspace/sprint2/Test/newlocation/wso2telcohub-4.0.1-SNAPSHOT/repository/conf/user-mgt.xml","<UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\">");
 
     }
-    //test
-
 
 }
