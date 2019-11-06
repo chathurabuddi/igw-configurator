@@ -59,6 +59,7 @@ public class Uncomment {
         u.makeUncommentXml("/home/praneeth/Documents/workspace/sprint2/Test/newlocation/wso2telcohub-4.0.1-SNAPSHOT/repository/conf/user-mgt.xml","<UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\">");
 
     }
+    //test
 
 
 }

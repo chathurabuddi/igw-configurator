@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import dto.ChangedFile;
 import dto.Config;
+import dto.Uncomment;
 import dto.ValueChange;
 import jdk.internal.org.xml.sax.SAXException;
 import java.io.File;
@@ -73,7 +74,9 @@ public class Main {
                 else if(change.getChangeType().equals("comment")) {
                     commentXmlNode(newFile,xpath,change.getValue());
                 }else if(change.getChangeType().equals("uncomment")) {
-                    System.out.println("uncomment");
+                    Uncomment u=new Uncomment();
+                    System.out.println(newFile.getPath());
+                    //u.makeUncommentXml();
                 }
 
             }
