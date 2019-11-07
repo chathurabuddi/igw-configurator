@@ -48,8 +48,8 @@ public class Main {
             logger.info("configuring API-M");
             configureFiles(config.getApimConf(), "new.dep.location", "old.dep.location");
 
-            logger.info("configuring IS");
-            configureFiles(config.getIsConf(), "new.is.location", "old.is.location");
+//            logger.info("configuring IS");
+//            configureFiles(config.getIsConf(), "new.is.location", "old.is.location");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
@@ -166,17 +166,13 @@ public class Main {
             Document xmlDocument = builder.parse(fileIs);
             XPathFactory xpf = XPathFactory.newInstance();
             XPath xpath1 = xpf.newXPath();
-
-
-
            // XPathExpression expression = xpath1.compile(xpath);
             String xpth = "//*[contains(@"+attribute+","+"'"+oldval+"'"+")]";
             NodeList nodes = (NodeList)xpath1.evaluate(xpth,
                     xmlDocument, XPathConstants.NODESET);
             for (int idx = 0; idx < nodes.getLength(); idx++) {
-                Node value = nodes.item(idx).getAttributes().getNamedItem("name");
-                String nodevalue = value.getNodeValue();
-                value.setNodeValue(nodevalue.replaceAll(oldval, val));
+                Node value = nodes.item(idx).getAttributes().getNamedItem(attribute);
+                value.setNodeValue(val);
             }
             TransformerFactory tf = TransformerFactory.newInstance();
             Transformer t = tf.newTransformer();
