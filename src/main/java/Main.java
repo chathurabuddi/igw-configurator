@@ -48,8 +48,8 @@ public class Main {
             logger.info("configuring API-M");
             configureFiles(config.getApimConf(), "new.dep.location", "old.dep.location");
 
-//            logger.info("configuring IS");
-//            configureFiles(config.getIsConf(), "new.is.location", "old.is.location");
+            logger.info("configuring IS");
+            configureFiles(config.getIsConf(), "new.is.location", "old.is.location");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
