@@ -26,6 +26,8 @@ public class ValueChange {
 
     private String value;
     private String oldValue;
+    private String add_node;
+    private int pageno;
 
 
     public String getName() {
@@ -74,5 +76,21 @@ public class ValueChange {
 
     public void setOldValue(String oldValue) {
         this.oldValue = oldValue;
+    }
+
+    public String getAdd_node() {
+        return add_node;
+    }
+
+    public void setAdd_node(String add_node) {
+        this.add_node = add_node;
+    }
+
+    public int getPageno() {
+        return pageno;
+    }
+
+    public void setPageno(int pageno) {
+        this.pageno = pageno;
     }
 }
