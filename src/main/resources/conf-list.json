@@ -75,7 +75,7 @@
 				"changeType": "replace_attribute",
 				"value": "https://localhost:9444/oauth2/authorize",
 				"attribute": "uri-template",
-				"oldvalue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/authorize"
+				"oldValue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/authorize"
 			}
 
 
@@ -89,7 +89,7 @@
 				"changeType": "replace_attribute",
 				"value": "https://localhost:9444/oauth2/revoke",
 				"attribute": "uri-template",
-				"oldvalue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/revoke"
+				"oldValue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/revoke"
 			}
 
 
@@ -102,7 +102,7 @@
 				"changeType": "replace_attribute",
 				"value": "https://localhost:9444/oauth2/token",
 				"attribute": "uri-template",
-				"oldvalue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/token"
+				"oldValue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/token"
 			}
 
 
