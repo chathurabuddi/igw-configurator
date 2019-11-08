@@ -2,8 +2,6 @@ package dto;
 
 import java.util.List;
 
-import dto.ValueChange;
-
 /**
  * Copyright (c) 2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
  * <p>

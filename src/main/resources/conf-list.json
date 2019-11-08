@@ -14,19 +14,31 @@
 			"name": "copy admin username",
 			"xpath": "/APIManager/AuthManager/Password",
 			"changeType": "copy"
+		}, {
+			"name": "copy ServerURL ",
+			"xpath": "/APIManager/AuthManager/ServerURL",
+			"changeType": "copy"
+		}, {
+			"name": "copy ServerURL ",
+			"xpath": "/APIManager/APIKeyValidator/ServerURL",
+			"changeType": "copy"
+		}, {
+			"name": "copy keyvalidator client type",
+			"xpath": "/APIManager/APIKeyValidator/KeyValidatorClientType",
+			"changeType": "copy"
+		}, {
+			"name": "copy EnableThriftServer",
+			"xpath": "/APIManager/APIKeyValidator/EnableThriftServer",
+			"changeType": "copy"
 		}]
-	}
-
-
-		,
+	},
 
 		{
-			"file": "/repository/conf/user-mgt.xml",
+			"file": "/repository/conf/identity/identity.xml",
 			"changes": [{
-				"name": "disable advance throttling",
-				"xpath": "/UserManager/Realm/Configuration/UserStoreManager",
-				"changeType": "uncomment",
-				"value": "UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\""
+				"name": "Changing the JDBCPersistenceManager property APIM",
+				"xpath": "/Server/JDBCPersistenceManager/DataSource/Name",
+				"changeType": "copy"
 			}]
 		},
 		{
@@ -36,145 +48,141 @@
 				"xpath": "/wso2registry/remoteInstance",
 				"changeType": "comment",
 				"value": "<remoteInstance url=\"https://localhost:9443/registry\">\n        <id>mount</id>\n        <dbConfig>sharedregistry</dbConfig>\n        <readOnly>false</readOnly>\n        <enableCache>true</enableCache>\n        <registryRoot>/</registryRoot>\n    </remoteInstance>"
-			}]},
-		{
-			"file": "/repository/conf/datasources/master-datasources.xml",
-			"changes": [
+			},
 				{
-					"name": "WSO2AM_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/url",
-					"changeType": "copy"
+					"name": "Replace attribute files",
+					"xpath": "/wso2registry/dbConfig",
+					"changeType": "replace_attribute",
+					"value": "sharedregistry",
+					"attribute": "name",
+					"oldValue" : "govregistry"
 				},
 				{
-					"name": "WSO2AM_DB username",
-					"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2AM_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[2]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2AM_STATS_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2AM_STATS_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2AM_STATS_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[3]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2MBStoreDB url",
-					"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2MBStoreDB password",
-					"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2MBStoreDB password",
-					"xpath": "/datasources-configuration/datasources/datasource[4]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2UM_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2UM_DB username",
-					"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2UM_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[5]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2REG_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2REG_DB username",
-					"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2REG_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[6]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2TELCO_DEP_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2TELCO_DEP_DB username",
-					"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2TELCO_DEP_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[7]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "ACTIVITI_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "ACTIVITI_DB username",
-					"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "ACTIVITI_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[8]/definition/configuration/password",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2TELCO_RATE_DB url",
-					"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/url",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2TELCO_RATE_DB username",
-					"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/username",
-					"changeType": "copy"
-				},
-				{
-					"name": "WSO2TELCO_RATE_DB password",
-					"xpath": "/datasources-configuration/datasources/datasource[9]/definition/configuration/password",
-					"changeType": "copy"
+					"name": "add new node",
+					"xpath": "wso2registry/handler",
+					"changeType": "add_node",
+					"pageno": 2
 				}
-			]
-		}
+
+
+
+			]},
+		{
+			"file": "/repository/deployment/server/synapse-configs/default/api/_AuthorizeAPI_.xml",
+			"changes": [{
+				"name": "Replace authorizeAPI",
+				"xpath": "/api/resource/inSequence/send/endpoint/http",
+				"changeType": "replace_attribute",
+				"value": "https://localhost:9444/oauth2/authorize",
+				"attribute": "uri-template",
+				"oldValue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/authorize"
+			}
+
+
+
+			]},
+		{
+			"file": "/repository/deployment/server/synapse-configs/default/api/_RevokeAPI_.xml",
+			"changes": [{
+				"name": "Replace authorizeAPI",
+				"xpath": "/api/resource/inSequence/send/endpoint/http",
+				"changeType": "replace_attribute",
+				"value": "https://localhost:9444/oauth2/revoke",
+				"attribute": "uri-template",
+				"oldValue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/revoke"
+			}
+
+
+
+			]},{
+			"file": "/repository/deployment/server/synapse-configs/default/api/_TokenAPI_.xml",
+			"changes": [{
+				"name": "Replace authorizeAPI",
+				"xpath": "/api/resource/inSequence/send/endpoint/http",
+				"changeType": "replace_attribute",
+				"value": "https://localhost:9444/oauth2/token",
+				"attribute": "uri-template",
+				"oldValue": "https://{uri.var.hostname}:{uri.var.portnum}/oauth2/token"
+			}
+
+
+
+			]}
 
 	],
 	"IdentityServerConf": [{
 		"file": "/repository/conf/api-manager.xml",
 		"changes": [{
 			"name": "copy server URL",
-			"xpath": "/APIManager/APIGateway/Environments/Environment/ServerURL",
+			"xpath": "/APIManager/AuthManager/ServerURL",
 			"changeType": "copy"
 		}, {
 			"name": "copy revoke API URL",
 			"xpath": "/APIManager/OAuthConfigurations/RevokeAPIURL",
 			"changeType": "copy"
-		}]
-	}]
+		}
+
+		]
+	},
+
+		{
+			"file": "/repository/conf/carbon.xml",
+			"changes": [{
+				"name": "Changing the offset",
+				"xpath": "/Server/Ports/Offset",
+				"changeType": "add",
+				"value": "1"
+			}]
+		},
+
+		{
+			"file": "/repository/conf/user-mgt.xml",
+			"changes": [{
+				"name": "Changing the propertyname datasource",
+				"xpath": "/UserManager/Realm/Configuration/Property[3]",
+				"changeType": "copy"
+			},{
+
+				"name": "Uncommenting UserStoreManager",
+				"xpath": "/UserManager/Realm",
+				"changeType": "uncomment",
+				"value": "UserStoreManager class=\"org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager\""
+
+			}]
+		},
+
+		{
+			"file": "/repository/conf/identity/identity.xml",
+			"changes": [{
+				"name": "Changing the JDBCPersistenceManager property",
+				"xpath": "/Server/JDBCPersistenceManager/DataSource/Name",
+				"changeType": "copy"
+			}]
+		},
+		{
+			"file": "/repository/conf/registry.xml",
+			"changes": [{
+				"name": "add new node",
+				"xpath": "wso2registry/handler",
+				"changeType": "add_node",
+				"pageno": 1
+			},
+				{
+					"name": "add new node",
+					"xpath": "wso2registry/handler",
+					"changeType": "add_node",
+					"pageno": 2
+				}
+			,{
+					"name": "add new node",
+					"xpath": "wso2registry/handler",
+					"changeType": "add_node",
+					"pageno": 3
+				}
+
+			]
+		}
+	]
 }
+
 

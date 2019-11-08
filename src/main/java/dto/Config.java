@@ -21,7 +21,7 @@ public class Config {
 
     private List<ChangedFile> apimConf;
 
-    private List<ChangedFile> isConf;
+    private List<ChangedFile> IdentityServerConf;
 
     public List<ChangedFile> getApimConf() {
         return apimConf;
@@ -32,10 +32,10 @@ public class Config {
     }
 
     public List<ChangedFile> getIsConf() {
-        return isConf;
+        return IdentityServerConf;
     }
 
     public void setIsConf(List<ChangedFile> isConf) {
-        this.isConf = isConf;
+        this.IdentityServerConf = IdentityServerConf;
     }
 }

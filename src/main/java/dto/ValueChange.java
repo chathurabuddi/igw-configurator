@@ -18,12 +18,17 @@ package dto;
 public class ValueChange {
 
     private String name;
+    private String attribute;
 
     private String xpath;
 
     private String changeType;
 
     private String value;
+    private String oldValue;
+    private String add_node;
+    private int pageno;
+
 
     public String getName() {
         return name;
@@ -55,5 +60,37 @@ public class ValueChange {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    public String getOldValue() {
+        return oldValue;
+    }
+
+    public void setOldValue(String oldValue) {
+        this.oldValue = oldValue;
+    }
+
+    public String getAdd_node() {
+        return add_node;
+    }
+
+    public void setAdd_node(String add_node) {
+        this.add_node = add_node;
+    }
+
+    public int getPageno() {
+        return pageno;
+    }
+
+    public void setPageno(int pageno) {
+        this.pageno = pageno;
     }
 }
