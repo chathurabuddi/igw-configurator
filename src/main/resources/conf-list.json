@@ -31,8 +31,8 @@
 			"xpath": "/APIManager/APIKeyValidator/EnableThriftServer",
 			"changeType": "copy"
 		}]
-	},
 
+	}	,
 		{
 			"file": "/repository/conf/identity/identity.xml",
 			"changes": [{
